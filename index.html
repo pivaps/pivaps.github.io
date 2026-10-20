@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paulo Sergio Piva</title>
+  <meta name="description" content="Paulo Sergio Piva: applied mathematics, engineering and ultrasound sensing. KTP Associate at the University of Sheffield and Johnson Matthey.">
+  <meta property="og:title" content="Paulo Sergio Piva">
+  <meta property="og:description" content="Applied mathematics, engineering and ultrasound sensing.">
+  <meta property="og:image" content="https://pivaps.github.io/assets/photo.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230E7C86'/%3E%3Cpath d='M8 38c6-12 10-12 16 0s10 12 16 0 10-12 16 0' fill='none' stroke='white' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+  <script>
+    // Apply a saved light/dark choice before the page paints
+    try { var t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <style>
+    :root {
+      --accent: #0E7C86;
+      --accent-2: #3B4BA8;
+      --accent-soft: #E1F2F3;
+      --bg: #FFFFFF;
+      --bg-alt: #F5F7F8;
+      --surface: #FFFFFF;
+      --text: #24292E;
+      --heading: #1B2430;
+      --muted: #66707A;
+      --rule: #E3E7EA;
+      --shadow: 0 1px 3px rgba(20, 30, 40, .06), 0 8px 24px rgba(20, 30, 40, .07);
+    }
+    :root[data-theme="dark"] {
+      --accent: #5CC6CF;
+      --accent-2: #9FB3E6;
+      --accent-soft: #163338;
+      --bg: #13171C;
+      --bg-alt: #181D23;
+      --surface: #1D232A;
+      --text: #D7DDE2;
+      --heading: #F0F3F5;
+      --muted: #96A1AB;
+      --rule: #2A323A;
+      --shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .3);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --accent: #5CC6CF;
+        --accent-2: #9FB3E6;
+        --accent-soft: #163338;
+        --bg: #13171C;
+        --bg-alt: #181D23;
+        --surface: #1D232A;
+        --text: #D7DDE2;
+        --heading: #F0F3F5;
+        --muted: #96A1AB;
+        --rule: #2A323A;
+        --shadow: 0 1px 3px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .3);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+      font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .brand, nav a { font-family: "Outfit", "Nunito Sans", sans-serif; color: var(--heading); }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    img { max-width: 100%; display: block; }
+
+    /* ------------------------------------------------ navbar */
+    .navbar {
+      position: sticky; top: 0; z-index: 20;
+      background: color-mix(in srgb, var(--bg) 90%, transparent);
+      backdrop-filter: blur(10px) saturate(150%);
+      border-bottom: 1px solid var(--rule);
+    }
+    .navbar .wrap { display: flex; align-items: center; gap: 28px; height: 62px; }
+    .brand { font-weight: 700; font-size: 20px; color: var(--heading); white-space: nowrap; }
+    .brand:hover { text-decoration: none; color: var(--accent); }
+    nav { flex: 1; }
+    nav ul { list-style: none; display: flex; gap: 24px; margin: 0; padding: 0; }
+    nav a { font-weight: 500; font-size: 16px; color: var(--muted); }
+    nav a:hover { color: var(--accent); text-decoration: none; }
+    .theme-toggle {
+      border: 1px solid var(--rule); background: var(--surface); color: var(--muted);
+      width: 38px; height: 38px; border-radius: 50%; cursor: pointer; font-size: 15px;
+    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+    @media (max-width: 760px) { nav { display: none; } .navbar .wrap { justify-content: space-between; } }
+
+    /* ------------------------------------------------ sections */
+    section { padding: 64px 0; }
+    section.alt { background: var(--bg-alt); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .section-title { font-size: 34px; font-weight: 700; margin: 0 0 8px; letter-spacing: -.3px; }
+    .section-title::after {
+      content: ""; display: block; width: 54px; height: 4px; margin-top: 10px; border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+    .lead { color: var(--muted); margin: 14px 0 30px; max-width: 760px; }
+
+    /* ------------------------------------------------ about / profile */
+    .about { display: grid; grid-template-columns: 300px 1fr; gap: 56px; align-items: start; }
+    .profile { text-align: center; position: sticky; top: 90px; }
+    .avatar {
+      width: 230px; height: 230px; margin: 0 auto 18px; border-radius: 50%; object-fit: cover;
+      padding: 5px; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .profile h1 { font-size: 30px; margin: 0 0 6px; font-weight: 700; }
+    .profile .position { color: var(--heading); font-weight: 600; margin: 0; }
+    .profile .org { color: var(--muted); margin: 0 0 18px; font-size: 16px; }
+    .socials { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+    .socials a {
+      width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%;
+      color: var(--accent); background: var(--accent-soft); font-size: 18px; transition: transform .15s, background .15s, color .15s;
+    }
+    .socials a:hover { transform: translateY(-2px); background: var(--accent); color: var(--bg); text-decoration: none; }
+
+    .about h2 { font-size: 34px; margin: 0 0 14px; }
+    .about p { margin: 0 0 14px; }
+    .tagline { display: inline-flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; }
+    .tagline li {
+      font-family: "Outfit", sans-serif; font-weight: 600; font-size: 15px; color: var(--accent);
+      border: 1.5px solid var(--accent); border-radius: 999px; padding: 3px 14px;
+    }
+    .facts { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 26px; }
+    .facts h3 { font-size: 20px; margin: 0 0 10px; }
+    .facts ul { list-style: none; margin: 0; padding: 0; }
+    .facts li { display: grid; grid-template-columns: 26px 1fr; gap: 6px; margin-bottom: 10px; line-height: 1.45; }
+    .facts li i { color: var(--accent); margin-top: 4px; }
+    .facts .sub { display: block; color: var(--muted); font-size: 15px; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+    .button {
+      display: inline-flex; align-items: center; gap: 8px; padding: 9px 18px; border-radius: 8px;
+      font-family: "Outfit", sans-serif; font-weight: 600; font-size: 15px;
+      background: var(--accent); color: #fff; border: 1.5px solid var(--accent);
+    }
+    .button.ghost { background: transparent; color: var(--accent); }
+    .button:hover { text-decoration: none; filter: brightness(1.08); }
+    :root[data-theme="dark"] .button:not(.ghost) { color: #10161A; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .button:not(.ghost) { color: #10161A; } }
+    @media (max-width: 860px) {
+      .about { grid-template-columns: 1fr; gap: 30px; }
+      .profile { position: static; }
+      .facts { grid-template-columns: 1fr; }
+    }
+
+    /* ------------------------------------------------ highlight (current work) */
+    .highlight { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; }
+    .highlight img { border-radius: 14px; box-shadow: var(--shadow); width: 100%; height: auto; }
+    .kicker { font-family: "Outfit", sans-serif; font-weight: 600; font-size: 14px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+    .highlight h3 { font-size: 26px; margin: 0 0 4px; }
+    .highlight .org { color: var(--muted); margin: 0 0 14px; }
+    .highlight p { margin: 0 0 12px; }
+    .stat { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 6px; padding: 10px 16px; border-radius: 10px; background: var(--accent-soft); }
+    .stat b { font-family: "Outfit", sans-serif; font-size: 26px; color: var(--accent); white-space: nowrap; }
+    @media (max-width: 860px) { .highlight { grid-template-columns: 1fr; } }
+
+    /* ------------------------------------------------ research cards */
+    .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 26px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden;
+      box-shadow: var(--shadow); display: flex; flex-direction: column; transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-3px); }
+    .card img { width: 100%; aspect-ratio: 1200 / 760; object-fit: cover; border-bottom: 1px solid var(--rule); background: #F7F7F2; }
+    .card .body { padding: 18px 22px 22px; flex: 1; display: flex; flex-direction: column; }
+    .card h3 { font-size: 15px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent); margin: 0 0 8px; }
+    .card p { margin: 0 0 14px; color: var(--text); }
+    .card .more { margin-top: auto; font-family: "Outfit", sans-serif; font-weight: 600; font-size: 15px; display: flex; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 760px) { .cards { grid-template-columns: 1fr; } }
+
+    /* ------------------------------------------------ publications */
+    .pub-group { font-size: 20px; margin: 30px 0 6px; }
+    .pub { padding: 18px 0; border-bottom: 1px solid var(--rule); }
+    .pub:last-child { border-bottom: 0; }
+    .pub h4 { font-size: 19px; font-weight: 600; margin: 0 0 4px; line-height: 1.35; }
+    .pub h4 a { color: var(--heading); }
+    .pub h4 a:hover { color: var(--accent); }
+    .pub .authors { margin: 0; color: var(--muted); }
+    .pub .authors b { color: var(--text); font-weight: 700; }
+    .pub .venue { margin: 0 0 8px; font-style: italic; color: var(--muted); }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 700; letter-spacing: .3px;
+      padding: 3px 11px; border-radius: 6px; border: 1.5px solid var(--accent); color: var(--accent);
+    }
+    .pill:hover { background: var(--accent); color: var(--bg); text-decoration: none; }
+    .pill.static { border-color: var(--rule); color: var(--muted); }
+    .pill.static:hover { background: none; color: var(--muted); }
+
+    /* ------------------------------------------------ talks timeline */
+    .timeline { list-style: none; margin: 0; padding: 0 0 0 22px; border-left: 2px solid var(--rule); }
+    .timeline li { position: relative; padding: 0 0 22px 18px; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -30px; top: 6px; width: 14px; height: 14px; border-radius: 50%;
+      background: var(--bg); border: 3px solid var(--accent);
+    }
+    .timeline.invited li::before { background: var(--accent); }
+    .timeline .when { font-family: "Outfit", sans-serif; font-weight: 600; font-size: 14px; color: var(--accent); letter-spacing: .5px; }
+    .timeline .what { display: block; font-weight: 700; color: var(--heading); line-height: 1.4; margin: 2px 0; }
+    .timeline .where { color: var(--muted); }
+    details.more-talks { margin-top: 10px; }
+    details.more-talks summary {
+      cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 8px;
+      font-family: "Outfit", sans-serif; font-weight: 600; color: var(--accent); margin-bottom: 18px;
+    }
+    details.more-talks summary::-webkit-details-marker { display: none; }
+    details.more-talks summary i { transition: transform .2s; }
+    details.more-talks[open] summary i { transform: rotate(90deg); }
+
+    /* ------------------------------------------------ recognition */
+    .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .tile { background: var(--surface); border: 1px solid var(--rule); border-radius: 14px; padding: 22px; box-shadow: var(--shadow); }
+    .tile .icon { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-size: 19px; margin-bottom: 12px; }
+    .tile h3 { font-size: 19px; margin: 0 0 10px; }
+    .tile ul { margin: 0; padding-left: 18px; }
+    .tile li { margin-bottom: 8px; line-height: 1.45; }
+    .tile li span { display: block; font-size: 14px; color: var(--muted); }
+    @media (max-width: 900px) { .tiles { grid-template-columns: 1fr; } }
+
+    /* ------------------------------------------------ contact */
+    .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+    .contact ul { list-style: none; margin: 0; padding: 0; }
+    .contact li { display: grid; grid-template-columns: 34px 1fr; align-items: center; margin-bottom: 14px; }
+    .contact li i { color: var(--accent); font-size: 19px; }
+    @media (max-width: 760px) { .contact { grid-template-columns: 1fr; } }
+
+    footer { border-top: 1px solid var(--rule); padding: 26px 0; color: var(--muted); font-size: 15px; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  </style>
+</head>
+<body>
+
+<!-- ====================================================== navbar -->
+<header class="navbar">
+  <div class="wrap">
+    <a class="brand" href="#about">Paulo Sergio Piva</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch light/dark theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+</header>
+
+<main>
+
+  <!-- ==================================================== about -->
+  <section id="about">
+    <div class="wrap about">
+      <aside class="profile">
+        <img class="avatar" src="assets/photo.jpg" alt="Portrait of Paulo Sergio Piva" width="230" height="230">
+        <h1>Paulo Sergio Piva</h1>
+        <p class="position">KTP Associate</p>
+        <p class="org">University of Sheffield &amp; Johnson Matthey</p>
+        <ul class="socials">
+          <li><a class="js-email" href="#contact" aria-label="Email" title="Email"><i class="fa-solid fa-envelope"></i></a></li>
+          <li><a href="https://scholar.google.com/citations?user=Ic641UEAAAAJ" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar"></i></a></li>
+          <li><a href="https://orcid.org/0000-0002-8239-970X" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid"></i></a></li>
+          <li><a href="https://github.com/pivaps" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/paulo-sergio-piva-bb0235208/" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
+          <li><a href="assets/Paulo_Piva_CV.pdf" aria-label="CV (PDF)" title="CV (PDF)"><i class="fa-solid fa-file-lines"></i></a></li>
+        </ul>
+      </aside>
+
+      <div>
+        <h2>About me</h2>
+        <ul class="tagline">
+          <li>Applied Mathematics</li><li>Physics</li><li>Engineering</li><li>Ultrasound Sensing</li>
+        </ul>
+        <p>
+          I am a Knowledge Transfer Partnership (KTP) Associate at the University of Sheffield, working with
+          Johnson Matthey to develop next-generation ultrasonic sensors that measure particle size distributions
+          in industrial processes.
+        </p>
+        <p>
+          My research combines applied mathematics, physics and engineering to understand how waves propagate
+          and scatter in random particulate materials, such as suspensions, emulsions and powders, and to turn
+          that understanding into practical measurement technology. I enjoy the whole path from theory and
+          numerical methods to laboratory experiments and working hardware.
+        </p>
+        <div class="cta">
+          <a class="button" href="assets/Paulo_Piva_CV.pdf"><i class="fa-solid fa-download"></i> Download CV</a>
+          <a class="button ghost" href="#publications"><i class="fa-solid fa-book-open"></i> Publications</a>
+        </div>
+
+        <div class="facts">
+          <div>
+            <h3>Interests</h3>
+            <ul>
+              <li><i class="fa-solid fa-wave-square"></i><span>Wave propagation &amp; multiple scattering</span></li>
+              <li><i class="fa-solid fa-microscope"></i><span>Ultrasonic sensing &amp; instrumentation</span></li>
+              <li><i class="fa-solid fa-magnifying-glass-chart"></i><span>Inverse problems &amp; statistical inference</span></li>
+              <li><i class="fa-solid fa-cubes"></i><span>Metamaterials &amp; random media</span></li>
+              <li><i class="fa-solid fa-square-root-variable"></i><span>Numerical methods &amp; continuum mechanics</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Education</h3>
+            <ul>
+              <li><i class="fa-solid fa-graduation-cap"></i><span>PhD in Mechanical Engineering, 2026<span class="sub">University of Sheffield</span></span></li>
+              <li><i class="fa-solid fa-graduation-cap"></i><span>MSc in Physics, 2021<span class="sub">University of Campinas (UNICAMP), Brazil</span></span></li>
+              <li><i class="fa-solid fa-graduation-cap"></i><span>BSc in Physics, 2019<span class="sub">University of Campinas (UNICAMP), Brazil</span></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== current work -->
+  <section id="work" class="alt">
+    <div class="wrap highlight">
+      <div>
+        <p class="kicker">Current project · Nov 2025 – present</p>
+        <h3>Next Generation Ultrasonic Sensors for Particulates</h3>
+        <p class="org">Knowledge Transfer Partnership · University of Sheffield &amp; Johnson Matthey</p>
+        <p>Selected as the sole Associate to lead a collaborative R&amp;D project bridging academic innovation and
+          industrial application. I am responsible for the end-to-end development and testing of a novel ultrasonic
+          sensor technology for particle size distribution measurements.</p>
+        <p>I designed the sensor from scratch, including CFD validation, manufacturing specification, component
+          sourcing and full-system assembly.</p>
+        <div class="stat"><b>10 months</b><span>from concept to first prototype hardware</span></div>
+      </div>
+      <img src="assets/blackboard.jpg" alt="Paulo pointing at equations on a blackboard during a discussion" width="1200" height="650" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ==================================================== research -->
+  <section id="research">
+    <div class="wrap">
+      <h2 class="section-title">Research</h2>
+      <p class="lead">From multiple scattering theory to instruments that work on a production line.</p>
+      <div class="cards">
+        <article class="card">
+          <img src="assets/research-particulate.png" alt="Simulated wave field scattered by a cloud of randomly placed particles" loading="lazy">
+          <div class="body">
+            <h3>Waves in random particulate media</h3>
+            <p>How sound and ultrasound travel through materials full of randomly placed particles, using multiple
+              scattering theory and ensemble averaging to predict the average wave across a broad frequency range.</p>
+            <div class="more">
+              <a href="https://doi.org/10.1088/1367-2630/ad49c2">New J. Phys. 2024 →</a>
+              <a href="https://doi.org/10.1098/rspa.2023.0660">Proc. R. Soc. A 2024 →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/research-layer.png" alt="Simulated wave reflected and transmitted by a layer of particles" loading="lazy">
+          <div class="body">
+            <h3>Sensing through layers</h3>
+            <p>Reflection and transmission by halfspaces and layers filled with particles, so that particulate
+              materials can be characterised from the ultrasound they send back.</p>
+            <div class="more">
+              <a href="https://doi.org/10.1088/1367-2630/ad9ed0">New J. Phys. 2024 →</a>
+              <a href="https://etheses.whiterose.ac.uk/id/eprint/38426/">PhD thesis →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/research-bandgap.png" alt="Transmission against frequency showing a band gap" loading="lazy">
+          <div class="body">
+            <h3>Band gaps from random resonators</h3>
+            <p>Designing acoustic band gaps with randomly distributed sub-wavelength Helmholtz resonators, and the
+              physical bounds on what such disordered metamaterials can achieve.</p>
+            <div class="more">
+              <a href="https://doi.org/10.1038/s44384-026-00045-w">npj Acoustics 2026 →</a>
+              <a href="https://www.youtube.com/watch?v=sizTL4PxFyM">Talk video →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <img src="assets/research-sensing.png" alt="Pulse-echo ultrasonic signal with echoes from a wall and a particulate" loading="lazy">
+          <div class="body">
+            <h3>Ultrasonic sensors for industry</h3>
+            <p>Turning models into in-line ultrasonic instruments for particle sizing, from experiment design with
+              MHz immersion transducers to installation-ready hardware with Johnson Matthey.</p>
+            <div class="more">
+              <a href="#work">Current project →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== publications -->
+  <section id="publications" class="alt">
+    <div class="wrap">
+      <h2 class="section-title">Publications</h2>
+
+      <h3 class="pub-group">Journal articles</h3>
+      <div class="pub">
+        <h4><a href="https://doi.org/10.1038/s44384-026-00045-w">Designing band gaps with randomly distributed sub-wavelength Helmholtz resonators</a></h4>
+        <p class="authors"><b>P. S. Piva</b>, A. L. Gower, I. D. Abrahams</p>
+        <p class="venue">npj Acoustics 2, 10 (2026)</p>
+        <div class="pills"><a class="pill" href="https://doi.org/10.1038/s44384-026-00045-w"><i class="fa-solid fa-link"></i> DOI</a><span class="pill static">Open access</span></div>
+      </div>
+      <div class="pub">
+        <h4><a href="https://doi.org/10.1088/1367-2630/ad9ed0">Acoustic waves in a halfspace material filled with random particulate</a></h4>
+        <p class="authors"><b>P. S. Piva</b>, K. K. Napal, A. L. Gower</p>
+        <p class="venue">New Journal of Physics 26, 123033 (2024)</p>
+        <div class="pills"><a class="pill" href="https://doi.org/10.1088/1367-2630/ad9ed0"><i class="fa-solid fa-link"></i> DOI</a></div>
+      </div>
+      <div class="pub">
+        <h4><a href="https://doi.org/10.1088/1367-2630/ad49c2">The average transmitted wave in random particulate materials</a></h4>
+        <p class="authors">A. Karnezis, <b>P. S. Piva</b>, A. L. Gower</p>
+        <p class="venue">New Journal of Physics 26, 063002 (2024)</p>
+        <div class="pills"><a class="pill" href="https://doi.org/10.1088/1367-2630/ad49c2"><i class="fa-solid fa-link"></i> DOI</a></div>
+      </div>
+      <div class="pub">
+        <h4><a href="https://doi.org/10.1098/rspa.2023.0660">Effective T-matrix of a cylinder filled with a random two-dimensional particulate</a></h4>
+        <p class="authors">K. K. Napal, <b>P. S. Piva</b>, A. L. Gower</p>
+        <p class="venue">Proceedings of the Royal Society A 480, 20230660 (2024)</p>
+        <div class="pills"><a class="pill" href="https://doi.org/10.1098/rspa.2023.0660"><i class="fa-solid fa-link"></i> DOI</a></div>
+      </div>
+
+      <h3 class="pub-group">Conference papers &amp; reports</h3>
+      <div class="pub">
+        <h4>Acoustic waves in layered material filled with random particulate: applications and theoretical advancements</h4>
+        <p class="authors"><b>P. S. Piva</b>, A. L. Gower</p>
+        <p class="venue">Bremen Workshop on Light Scattering (2025)</p>
+        <div class="pills"><a class="pill" href="https://scattport.org/index.php/conferences-menu/arvive-conferences/775-bremen-workshop-on-light-scattering-2025"><i class="fa-solid fa-calendar"></i> Workshop</a></div>
+      </div>
+      <div class="pub">
+        <h4>Mathematical model for layered acoustic materials with random particulate microstructure</h4>
+        <p class="authors"><b>P. S. Piva</b> et al.</p>
+        <p class="venue">Phononics 2023, Manchester</p>
+        <div class="pills"><a class="pill" href="https://phononics.org/phononics2023/conf/index.php/phononics/2023/index.html"><i class="fa-solid fa-calendar"></i> Conference</a></div>
+      </div>
+      <div class="pub">
+        <h4><a href="https://doi.org/10.33774/miir-2023-mxttp">Microwave cooking of thin potato discs</a></h4>
+        <p class="authors">C. J. Budd, <b>P. S. Piva</b>, M. D. Shirley, R. J. Whittaker</p>
+        <p class="venue">Mathematics in Industry Reports (2023): European Study Group with Industry 171, with PepsiCo</p>
+        <div class="pills"><a class="pill" href="https://doi.org/10.33774/miir-2023-mxttp"><i class="fa-solid fa-link"></i> DOI</a></div>
+      </div>
+
+      <h3 class="pub-group">Theses</h3>
+      <div class="pub">
+        <h4><a href="https://etheses.whiterose.ac.uk/id/eprint/38426/">Average wave propagation and scattering in random particulate media: a broad frequency range</a></h4>
+        <p class="authors"><b>P. S. Piva</b></p>
+        <p class="venue">PhD thesis, University of Sheffield (2026)</p>
+        <div class="pills"><a class="pill" href="https://etheses.whiterose.ac.uk/id/eprint/38426/"><i class="fa-solid fa-file-pdf"></i> White Rose eTheses</a></div>
+      </div>
+      <div class="pub">
+        <h4><a href="https://repositorio.unicamp.br/acervo/detalhe/1165158">Gravitational waves and Robinson-Trautman spacetimes</a></h4>
+        <p class="authors"><b>P. S. Piva</b></p>
+        <p class="venue">MSc thesis, University of Campinas (2021)</p>
+        <div class="pills"><a class="pill" href="https://repositorio.unicamp.br/acervo/detalhe/1165158"><i class="fa-solid fa-file-pdf"></i> UNICAMP repository</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== talks -->
+  <section id="talks">
+    <div class="wrap">
+      <h2 class="section-title">Talks</h2>
+      <p class="lead">14 talks, 6 posters and 1 webinar since 2022.</p>
+
+      <ul class="timeline invited">
+        <li><span class="when">AUG 2026 · INVITED</span>
+          <span class="what">Scattering and physical bounds of randomly placed Helmholtz resonators</span>
+          <span class="where"><a href="https://www.newton.ac.uk/event/mwsw06/">MWSW06</a>, Isaac Newton Institute, Cambridge · <a href="https://www.youtube.com/watch?v=sizTL4PxFyM"><i class="fa-brands fa-youtube"></i> Video</a></span></li>
+        <li><span class="when">JUL 2026 · INVITED</span>
+          <span class="what">Band gaps and physical bounds from randomly distributed resonators</span>
+          <span class="where"><a href="https://metamat2026.sciencesconf.org/704265">MetaMAT 2026</a>, Corsica · <a href="https://doi.org/10.52843/cassyni.99ck11"><i class="fa-solid fa-play"></i> Recording</a></span></li>
+        <li><span class="when">MAR 2026 · WEBINAR</span>
+          <span class="what">From multiple scattering to effective properties: engineering bandgaps in random media</span>
+          <span class="where"><a href="https://cassyni.com/s/meta-mat">MetaMAT seminar series</a> · <a href="https://doi.org/10.52843/meta-mat.5n1qn8"><i class="fa-solid fa-play"></i> Recording</a></span></li>
+        <li><span class="when">JUN 2025 · INVITED</span>
+          <span class="what">From time to frequency: interpreting reflections in layered acoustic medium via formal power series</span>
+          <span class="where"><a href="https://sites.exeter.ac.uk/bmc-bamc2025/">British Mathematical Colloquium &amp; British Applied Mathematics Colloquium</a>, Exeter</span></li>
+      </ul>
+
+      <details class="more-talks">
+        <summary><i class="fa-solid fa-chevron-right"></i> Show all talks and posters</summary>
+        <ul class="timeline">
+          <li><span class="when">APR 2025 · TALK</span><span class="what">In-line acoustic sensing for dense particulate materials</span><span class="where">Johnson Matthey academic conference, Coventry</span></li>
+          <li><span class="when">APR 2025 · TALK</span><span class="what">Band gaps from randomly distributed resonators</span><span class="where"><a href="https://metamaterials.network/workshop-on-metamaterials-with-extra-dimensions/">Workshop on Metamaterials with Extra Dimensions</a>, Imperial College London</span></li>
+          <li><span class="when">DEC 2024 · TALK</span><span class="what">Finalist presentation</span><span class="where"><a href="https://www.mwmresearchgroup.org/UKAN-MCA.html">UKAN+ Mathematical and Computational Acoustics Paper Prize &amp; Workshop</a></span></li>
+          <li><span class="when">JUL 2024 · POSTER</span><span class="what">Modelling ultrasound sensing methods for particulate materials</span><span class="where">DRG showcase, University of Sheffield</span></li>
+          <li><span class="when">JUN 2024 · POSTER</span><span class="what">Modelling ultrasound sensing methods for particulate materials</span><span class="where">Second-year MechEng poster presentation, University of Sheffield</span></li>
+          <li><span class="when">APR 2024 · SEMINAR</span><span class="what">Acoustic sensing of particulate materials through layers</span><span class="where">Seminar series, Imperial College London</span></li>
+          <li><span class="when">APR 2024 · TALK</span><span class="what">Acoustic sensing of particulate materials through layers</span><span class="where"><a href="https://conferences.ncl.ac.uk/bamc2024/">British Applied Mathematics Colloquium</a>, Newcastle</span></li>
+          <li><span class="when">OCT 2023 · SEMINAR</span><span class="what">Why care about inverse problems if your focus is modelling?</span><span class="where">Seminar series, University of Manchester (with A. L. Gower and J. R. Kent)</span></li>
+          <li><span class="when">AUG 2023 · TALK</span><span class="what">Wave scattering from layers of random particulate materials</span><span class="where"><a href="https://iciam2023.org/">International Congress on Industrial and Applied Mathematics</a>, Tokyo</span></li>
+          <li><span class="when">JUL 2023 · TALK</span><span class="what">PepsiCo problem: results presentation (with Matthew Shirley)</span><span class="where"><a href="https://icms.ac.uk/archive/workshop/european-study-group-with-industry-esgi-171/">European Study Group with Industry 171</a>, Edinburgh</span></li>
+          <li><span class="when">JUL 2023 · TALK</span><span class="what">Modelling lipid raft formation (group presentation)</span><span class="where"><a href="https://gateway.newton.ac.uk/event/tgm132/programme">UK Graduate Modelling Camp</a>, Isaac Newton Institute, Cambridge</span></li>
+          <li><span class="when">JUN 2023 · POSTER</span><span class="what">Mathematical model for layered acoustic materials with random particulate microstructure</span><span class="where"><a href="https://phononics.org/phononics2023/conf/index.php/phononics/2023/index.html">Phononics</a>, Manchester</span></li>
+          <li><span class="when">APR 2023 · POSTER</span><span class="what">Modelling ultrasound sensing methods for particulate materials</span><span class="where">Johnson Matthey academic conference, Coventry</span></li>
+          <li><span class="when">APR 2023 · TALK</span><span class="what">Wave scattering from layers of random particulate materials</span><span class="where"><a href="https://engmaths.github.io/bamc2023/">British Applied Mathematics Colloquium</a>, Bristol</span></li>
+          <li><span class="when">MAR 2023 · POSTER</span><span class="what">Waves in a cylinder filled with random particulate material</span><span class="where"><a href="https://www.newton.ac.uk/event/mwsw02/">Workshop MWSW02</a>, Isaac Newton Institute, Cambridge</span></li>
+          <li><span class="when">JAN 2023 · TALK</span><span class="what">Computational Challenge: group solution</span><span class="where"><a href="https://www.newton.ac.uk/event/mwsw05/">Winter School MWSW05</a>, Isaac Newton Institute, Cambridge</span></li>
+          <li><span class="when">APR 2022 · POSTER</span><span class="what">Sensing particulates with multiple scattering</span><span class="where">Johnson Matthey academic conference, Coventry</span></li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- ==================================================== recognition, teaching, service -->
+  <section id="recognition" class="alt">
+    <div class="wrap">
+      <h2 class="section-title">Recognition &amp; service</h2>
+      <div style="height:26px"></div>
+      <div class="tiles">
+        <div class="tile">
+          <div class="icon"><i class="fa-solid fa-award"></i></div>
+          <h3>Prizes &amp; recognition</h3>
+          <ul>
+            <li>Nominated by colleagues as an outstanding postdoc<span>Postdoc Appreciation Week, University of Sheffield, 2026</span></li>
+            <li>Finalist, UKAN+ Mathematical and Computational Acoustics Paper Prize<span>2024</span></li>
+            <li>Poster prize, second place<span>DRG showcase, University of Sheffield, 2024</span></li>
+            <li>IMA Best Presentation Prize (group)<span>UK Graduate Modelling Camp, 2023</span></li>
+            <li>Best numerical and overall solution (team)<span>Computational Challenge, Winter School MWSW05, 2023</span></li>
+          </ul>
+        </div>
+        <div class="tile">
+          <div class="icon"><i class="fa-solid fa-coins"></i></div>
+          <h3>Funding</h3>
+          <ul>
+            <li>EPSRC ICASE PhD studentship with Johnson Matthey<span>2021–2025</span></li>
+            <li>FAPESP MSc scholarship<span>2019–2021</span></li>
+            <li>FAPESP undergraduate research scholarship<span>2017–2018</span></li>
+            <li>CNPq undergraduate research scholarship<span>2017</span></li>
+          </ul>
+        </div>
+        <div class="tile">
+          <div class="icon"><i class="fa-solid fa-chalkboard-user"></i></div>
+          <h3>Teaching &amp; service</h3>
+          <ul>
+            <li>Reviewer for <em>Nonlinear Dynamics</em>, <em>npj Acoustics</em> and <em>Wave Motion</em><span>since 2025</span></li>
+            <li>Organiser and chair, mini-symposium on acoustic and elastic wave scattering<span>BAMC 2024, Newcastle</span></li>
+            <li>Graduate Teaching Assistant, Mechanical Engineering<span>University of Sheffield, 2022–2025</span></li>
+            <li>Founder, online mathematical physics journal club<span>UNICAMP, 2020–2021</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== contact -->
+  <section id="contact">
+    <div class="wrap">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact" style="margin-top:26px">
+        <p style="margin:0">I am always happy to talk about wave scattering, ultrasonic sensing and industrial
+          measurement problems. Feel free to get in touch.</p>
+        <ul>
+          <li><i class="fa-solid fa-envelope"></i><a class="js-email js-email-text" href="#contact"><noscript>p.piva [at] sheffield [dot] ac [dot] uk</noscript></a></li>
+          <li><i class="fa-solid fa-location-dot"></i><span>Sheffield, United Kingdom</span></li>
+          <li><i class="fa-brands fa-linkedin-in"></i><a href="https://www.linkedin.com/in/paulo-sergio-piva-bb0235208/">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Paulo Sergio Piva</span>
+    <span>Sheffield, UK</span>
+  </div>
+</footer>
+
+<script>
+  // Email address is assembled in the browser so it is not plain text in the page source.
+  (function () {
+    var address = "p.piva" + "@" + "sheffield" + "." + "ac" + "." + "uk";
+    document.querySelectorAll(".js-email").forEach(function (a) { a.href = "mailto:" + address; });
+    document.querySelectorAll(".js-email-text").forEach(function (a) { a.textContent = address; });
+  })();
+
+  // Light/dark toggle (remembers the choice when storage is available)
+  (function () {
+    var root = document.documentElement, btn = document.getElementById("theme-toggle"), icon = btn.querySelector("i");
+    function current() {
+      return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    }
+    function sync() { icon.className = current() === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon"; }
+    btn.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
+      root.dataset.theme = next;
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      sync();
+    });
+    sync();
+  })();
+</script>
+</body>
+</html>
